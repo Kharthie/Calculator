@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .calculator {
+            box-shadow: 6px 6px 13px #fff, 6px 6px 13px rgba(0, 0, 0, .16);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 66px);
+            background-color: lightgreen;
+            margin-bottom: 80px;
+        }
+
+        .final {
+            width: 50px;
+            box-shadow: inset 6px 6px 13px #fff, inset 6px 6px 13px rgba(0, 0, 0, .16);
+            background-color: #ecf0f3;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #00d9ff;
+        }
+
+        input {
+            grid-column: span 4;
+            height: 60px;
+            width: 258px;
+            box-shadow: inset 6px 6px 13px #fff, inset 6px 6px 13px rgba(0, 0, 0, .16);
+            background-color: #ecf0f3;
+            border: none;
+            color: rgb(26, 25, 25);
+            text-align: end;
+            margin: 40px 0px 30px 0px;
+            padding: 20px;
+            font-size: 50px;
+        }
+
+        button {
+            box-shadow: inset 6px 6px 13px #fff, inset 6px 6px 13px rgba(0, 0, 0, .16);
+            background-color: #ecf0f3;
+            border: none;
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+            font-family: fantasy;
+            background-color: salmon;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>C A L C U L A T O R + - * / % </h1>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" id="inputtext" placeholder="0">
+            <button onclick="clr()">ON/AC</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="calculate('%')"> %</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="calculate(7)">7</button>
+            <button onclick="calculate(8)">8</button>
+            <button onclick="calculate(9)">9</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate(4)">4</button>
+            <button onclick="calculate(5)">5</button>
+            <button onclick="calculate(6)">6</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate(1)">1</button>
+            <button onclick="calculate(2)">2</button>
+            <button onclick="calculate(3)">3</button>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('0')">0</button>
+            <button onclick="calculate('00')">00</button>
+            <button onclick="calculate('.')">.</button>
+            <button class="final" onclick="Result()">=</button>
+        </div>
+    </div>
+    <script>
+        let result = document.getElementById("inputtext");
+        let calculate = (Number) => {
+            result.value = result.value + Number;
+        }
+        let Result = () => {
+            try {
+                result.value = eval(result.value)
+            } catch (err) {
+                alert("Enter the valid result")
+            }
+        }
+        function clr() {
+            result.value = " ";
+        }
+        function del() {
+            result.value = result.value.slice(0, -1);
+        }
+    </script>
+</body>
+
+</html>
